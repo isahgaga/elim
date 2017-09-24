@@ -1,0 +1,18 @@
+.programs .p-btn, .programs .p-btn:visited {
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 7px 35px 7px;
+    display: inline-block;
+    border-radius: 25px;
+    border: 2px solid #cccccc;
+    color: #777777;
+     text-decoration: none;
+}
+
+.programs .p-btn:hover, .programs .p-btn:focus {
+    background: #973793;
+    color: #FFFFFF;
+    border-color: #973793;
+    text-decoration: none;
+}

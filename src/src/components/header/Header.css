@@ -1,0 +1,94 @@
+.slick-dots {
+    position: absolute;
+    bottom: 30px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    left: 0;
+}
+.slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: transparent;
+    background-color: white;
+}
+.slick-dots li button:before {
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '\2022';
+    text-align: center;
+    opacity: 1;
+     color: transparent; 
+    -webkit-font-smoothing: antialiased;
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    -moz-osx-font-smoothing: grayscale;
+}
+.image-large{
+	padding: 200px 0px;
+    background-size: cover;
+}
+.image-large .content{
+	position: relative;
+    z-index: 99;
+}
+.image-large:before{
+	background: #000000;
+    opacity: 0.3;
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.image-large .buttons{
+	margin-top: 30px;
+	text-align: center;
+}
+.image-large .buttons a{
+	    background: transparent;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 10px 35px 9px;
+    display: inline-block;
+    border-radius: 25px;
+    position: relative;
+}
+.header-title{
+	font-weight: 600;
+    text-transform: uppercase;
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 0 auto 20px;
+    max-width: 730px;
+    color: white;
+    text-align: center;
+}
+.header-text{
+	text-align: center;
+    color: #FFFFFF;
+    max-width: 730px;
+    margin: 0 auto;
+}
+/*.slick-dots li {
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    margin-right: 10px;
+    opacity: 1;
+}*/

@@ -1,0 +1,35 @@
+.news-letter-wrapper{
+	background-color: #1bbc9b;
+    min-height: 400px;
+}
+.subscribe {
+    font-size: 26px;
+    line-height: 40px;
+   // margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 350;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+img.emoji {
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
+}
+.btn-green {
+   color: #fff;
+    background-color: #ce3236;
+    border-color: #ce3236;
+}
+
+.btn-green:hover {
+   color: #fff;
+    background-color: #ce3236;
+    border-color: #ce3236;
+}

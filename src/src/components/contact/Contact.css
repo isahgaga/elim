@@ -1,0 +1,67 @@
+.contact-title{
+	font-size: 18px;
+	clear: both;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fa6900;
+}
+
+input[type="email"],input[type="text"], input[type="time"], input[type="week"], input[type="search"], input[type="month"], input[type="datetime"], input[type="date"], textarea, textarea.form-control, select, .woocommerce form .form-row .select2-container .select2-choice, .select2-container--default .select2-selection--single, .form-control, div.cs-select, .cs-select {
+    display: block;
+    width: 100%;
+    padding: 14px 20px 9px;
+    font-size: 13px;
+    background-color: #fff;
+    background-image: none;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    border: 1px solid #ebebeb;
+    color: #666;
+    box-shadow: none;
+    line-height: normal;
+    height: auto;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    -ms-transition: 0.2s;
+    transition: 0.2s;
+    outline: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 5px;
+    outline: 0;
+}
+.ajax-loader {
+    visibility: hidden;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: none;
+    padding: 0;
+    margin: 0 0 0 4px;
+    vertical-align: middle;
+}
+input[type="submit"]{
+	transition: 0.2s;
+    text-transform: uppercase;
+    outline: 0;
+    padding: 13px 35px 13px;
+    font-size: 13px;
+    font-weight: 500;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #FFFFFF;
+    border: 1px solid #fa6900;
+    background: #fa6900;
+    border-radius: 5px;
+}
+input[type="submit"]:hover{
+	transition: 0.2s;
+    color: #fa6900;
+    border: 1px solid #fa6900;
+    outline: 0;
+    background: transparent;
+}

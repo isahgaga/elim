@@ -1,0 +1,26 @@
+.page-title-breadcrumbs {
+    background: #000000;
+    position: relative;
+    padding: 86px 0px 83px;
+    margin-bottom: 90px;
+    color: #FFFFFF;
+}
+
+.page-title-breadcrumbs .page-title-breadcrumbs-image {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    opacity: 0.30;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.page-title-breadcrumbs h1{
+	position: relative;
+	z-index: 90;
+	margin: 0px;
+    color: #FFFFFF;
+    font-size: 40px;
+    font-weight: 600;
+}
