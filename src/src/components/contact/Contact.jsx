@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Banner from '../banner/Banner.jsx'
 import BG from '../../media/banner.jpg'
 import './Contact.css'
+import Axios from 'axios';
 const Separator=(props)=>{
 	return(
 		<div className="col-md-12 white">
@@ -14,12 +15,49 @@ class Contact extends Component{
 	constructor(props){
 		super(props);
 		this.handleEmailChange=this.handleEmailChange.bind(this);
-		this.state={email:''};
+		this.handleSubjectChange=this.handleSubjectChange.bind(this);
+		this.handleNameChange=this.handleNameChange.bind(this);
+		this.handleMessageChange=this.handleMessageChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state={email:'',subject:'',name:'',message:''};
+
 	}
 	handleEmailChange(e){
 		this.setState({email:e.target.value});
 			
 	}
+	handleSubjectChange(e){
+		this.setState({subject:e.target.value});
+	}
+	handleNameChange(e){
+		this.setState({name:e.target.value});
+	}
+	handleMessageChange(e){
+		this.setState({message:e.target.value});
+	}
+	handleSubmit(e){
+		e.preventDefault();
+		//alert('nero')
+		const url = 'http://localhost:8000/api/contact';
+		const data = {
+			name: this.state.name,
+			email: this.state.email,
+			subject: this.state.subject,
+			message: this.state.message
+		}
+		Axios.put(url,data).then(function(res){
+			alert(res.data);
+		}).catch(function(err){
+			alert(err);
+		})
+		console.log('done my stuff');
+		
+		
+
+	}
+
+
+
 	render(){
 		return (
 				<div className="row about-row">
@@ -35,7 +73,7 @@ class Contact extends Component{
 										<div >
 											<div className="row">
 												<div className="col-xs-12 col-sm-6 form-group"><span className="your-name">
-													<input type="text" name="your-name" value="" size="40" className="" aria-required="true" aria-invalid="false" placeholder="Your Name"/></span>
+													<input type="text" name="your-name" value={this.state.name} onChange={this.handleNameChange} size="40" className="" aria-required="true" aria-invalid="false" placeholder="Your Name"/></span>
 												</div>
 												<div className="col-xs-12 col-sm-6 form-group"><span className="your-email">
 													<input type="email" name="your-email" value={this.state.email} onChange={this.handleEmailChange} size="40" className="" aria-required="true" aria-invalid="false" placeholder="Your Email"/></span>
@@ -43,16 +81,16 @@ class Contact extends Component{
 											</div>
 											<div className="form-group">
 												<span className="wpcf7-form-control-wrap your-subject">
-													<input type="text" name="your-subject" value="" size="40" className="" aria-invalid="false" placeholder="Subject"/>
+													<input type="text" name="your-subject" value={this.state.subject} onChange={this.handleSubjectChange} size="40" className="" aria-invalid="false" placeholder="Subject"/>
 												</span>
 											</div>
 											<div className="form-group">
 												<span className="">
-													<textarea name="your-message" cols="40" rows="8" className="" aria-invalid="false" placeholder="Your Message"></textarea>
+													<textarea name="your-message" value={this.state.message} onChange={this.handleMessageChange} cols="40" rows="8" className="" aria-invalid="false" placeholder="Your Message"></textarea>
 												</span>
 											</div>
 											<p>
-												<input type="submit" value="Send" className=""/>
+												<input type="submit" value="Send" onClick={this.handleSubmit} className=""/>
 												<span className="ajax-loader"></span>
 											</p>
 										</div>
