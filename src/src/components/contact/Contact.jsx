@@ -67,7 +67,9 @@ class Contact extends Component{
 
 	render(){
   const styles={
-  			backgroundColor: this.state.isSuccessful===true ?'green':'#fa6900'
+
+  			backgroundColor: (this.state.isSuccessful) ?'green':'#fa6900'
+
   };
 		return (
 				<div className="row about-row">
