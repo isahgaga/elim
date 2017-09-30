@@ -19,7 +19,7 @@ class Contact extends Component{
 		this.handleNameChange=this.handleNameChange.bind(this);
 		this.handleMessageChange=this.handleMessageChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.state={email:'',subject:'',name:'',message:'',submitButtonText:'Send',isSuccessful:false,failed:false};
+		this.state={email:'',subject:'',name:'',message:'',submitButtonText:'Send',isSuccessful:false,failed:false,emailError:false};
 
 
 	}
@@ -39,6 +39,10 @@ class Contact extends Component{
 	handleSubmit(e){
 		//let that = this;
 		this.setState({submitButtonText: '...Sending'});
+		if(this.state.email = ''){
+			this.setState({emailError:true})
+			return
+		}
 		e.preventDefault();
 		//alert('nero')
 		const url = 'http://localhost:8000/api/contact';
@@ -87,16 +91,19 @@ class Contact extends Component{
 												</div>
 												<div className="col-xs-12 col-sm-6 form-group"><span className="your-email">
 													<input type="email" name="your-email" value={this.state.email} onChange={this.handleEmailChange} size="40" className="" aria-required="true" aria-invalid="false" placeholder="Your Email"/></span>
+													{this.state.emailError === true && <span>Please provide an email</span>}
 												</div>
 											</div>
 											<div className="form-group">
 												<span className="wpcf7-form-control-wrap your-subject">
 													<input type="text" name="your-subject" value={this.state.subject} onChange={this.handleSubjectChange} size="40" className="" aria-invalid="false" placeholder="Subject"/>
+													<span>Please enter a topic</span>
 												</span>
 											</div>
 											<div className="form-group">
 												<span className="">
 													<textarea name="your-message" value={this.state.message} onChange={this.handleMessageChange} cols="40" rows="8" className="" aria-invalid="false" placeholder="Your Message"></textarea>
+
 												</span>
 											</div>
 											<p>
