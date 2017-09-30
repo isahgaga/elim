@@ -19,7 +19,8 @@ class Contact extends Component{
 		this.handleNameChange=this.handleNameChange.bind(this);
 		this.handleMessageChange=this.handleMessageChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.state={email:'',subject:'',name:'',message:''};
+		this.state={email:'',subject:'',name:'',message:'',submitButtonText:'Send',isSuccessfull:false,failed:false};
+
 
 	}
 	handleEmailChange(e){
@@ -36,6 +37,8 @@ class Contact extends Component{
 		this.setState({message:e.target.value});
 	}
 	handleSubmit(e){
+		//let that = this;
+		this.setState({submitButtonText: '...Sending'});
 		e.preventDefault();
 		//alert('nero')
 		const url = 'http://localhost:8000/api/contact';
@@ -45,9 +48,14 @@ class Contact extends Component{
 			subject: this.state.subject,
 			message: this.state.message
 		}
-		Axios.put(url,data).then(function(res){
+		Axios.put(url,data).then((function(res){
+			this.setState({submitButtonText: 'Sent'});
+			this.setState({isSuccessfull:true});
 			alert(res.data);
-		}).catch(function(err){
+		}).bind(this)).catch((err)=>{
+			this.setState({submitButtonText: 'Send'});
+			this.setState({failed:true})
+
 			alert(err);
 		})
 		console.log('done my stuff');
@@ -59,6 +67,9 @@ class Contact extends Component{
 
 
 	render(){
+  const styles={
+  			backgroundColor: (this.state.failed) ?'pink':'black'
+  };
 		return (
 				<div className="row about-row">
 					<Banner bImage={BG} title="Contact"/>
@@ -90,7 +101,7 @@ class Contact extends Component{
 												</span>
 											</div>
 											<p>
-												<input type="submit" value="Send" onClick={this.handleSubmit} className=""/>
+												<input type="submit" value={this.state.submitButtonText} onClick={this.handleSubmit} className="" style={styles}/>
 												<span className="ajax-loader"></span>
 											</p>
 										</div>
