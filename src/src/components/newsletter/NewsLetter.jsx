@@ -4,8 +4,14 @@ import './NewsLetter.css'
 class NewsLetter extends Component{
 	constructor(props){
 		super(props);
+		this.state={email:''};
 	}
-
+	handleEmailChange(event){
+		this.setState({email:event.target.value});
+	}
+	subscribe(){
+		alert(this.state.email)
+	}
 	render(){
 	return	<div className="news-letter-wrapper pt-75">
 			
@@ -16,9 +22,9 @@ class NewsLetter extends Component{
 							<div className="col-md-6 col-md-offset-3">
 								<form>
 									<div className="form-group">
-										<input className="form-control input-lg" id="email" name="email" type="email" placeholder="Enter email" required=""/>
+										<input className="form-control input-lg" id="email" name="email" value={this.state.email} type="email" placeholder="Enter email" required="" onChange={this.handleEmailChange}/>
 									</div>
-									<button className="btn  btn-green btn-primary btn-lg btn-block" name="subscribe" id="subscribe">Subscribe</button>
+									<button className="btn  btn-green btn-primary btn-lg btn-block" name="subscribe" id="subscribe" onClick={this.subscribe}>Subscribe</button>
 									<span className="help-block center">No spam ever! Unsubscribe at any time.</span>
 								</form>
 							</div>

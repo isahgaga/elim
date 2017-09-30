@@ -38,7 +38,7 @@ class Contact extends Component{
 	handleSubmit(e){
 		e.preventDefault();
 		//alert('nero')
-		const url = 'http://localhost:8000/api/contact';
+		const url = 'http://localhost/elim/site/public/api/contact';
 		const data = {
 			name: this.state.name,
 			email: this.state.email,
