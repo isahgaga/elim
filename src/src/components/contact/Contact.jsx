@@ -54,7 +54,7 @@ class Contact extends Component{
 			alert(res.data);
 		}).bind(this)).catch((err)=>{
 			this.setState({submitButtonText: 'Send'});
-			this.setState({failed:true})
+			this.setState({isSuccessfull:false})
 
 			alert(err);
 		})
@@ -68,7 +68,7 @@ class Contact extends Component{
 
 	render(){
   const styles={
-  			backgroundColor: (this.state.failed) ?'pink':'black'
+  			backgroundColor: (this.state.isSuccessfull) ?'green':'fa6900'
   };
 		return (
 				<div className="row about-row">
