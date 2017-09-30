@@ -19,7 +19,7 @@ class Contact extends Component{
 		this.handleNameChange=this.handleNameChange.bind(this);
 		this.handleMessageChange=this.handleMessageChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.state={email:'',subject:'',name:'',message:'',submitButtonText:'Send',isSuccessfull:false,failed:false};
+		this.state={email:'',subject:'',name:'',message:'',submitButtonText:'Send',isSuccessful:false,failed:false};
 
 
 	}
@@ -49,11 +49,11 @@ class Contact extends Component{
 			message: this.state.message
 		}
 		Axios.put(url,data).then((function(res){
-			this.setState({submitButtonText: 'Sent',isSuccessfull:true});			
+			this.setState({submitButtonText: 'Sent',isSuccessful:true});			
 			setTimeout(() =>{this.setState({submitButtonText: 'Send',isSuccessful:false})},5000);
 			alert(res.data);
 		}).bind(this)).catch((err)=>{
-			this.setState({submitButtonText: 'Send',isSuccessfull:false});
+			this.setState({submitButtonText: 'Send',isSuccessful:false});
 			
 			alert(err);
 		})
@@ -67,7 +67,7 @@ class Contact extends Component{
 
 	render(){
   const styles={
-  			backgroundColor: (this.state.isSuccessfull) ?'green':'fa6900'
+  			backgroundColor: (this.state.isSuccessful) ?'green':'fa6900'
   };
 		return (
 				<div className="row about-row">
