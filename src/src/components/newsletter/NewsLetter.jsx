@@ -4,12 +4,16 @@ import './NewsLetter.css'
 class NewsLetter extends Component{
 	constructor(props){
 		super(props);
+		this.handleEmailChange=this.handleEmailChange.bind(this);
+		this.subscribe=this.subscribe.bind(this);
 		this.state={email:''};
 	}
 	handleEmailChange(event){
 		this.setState({email:event.target.value});
 	}
-	subscribe(){
+	subscribe(event){
+		event.persist();
+		event.preventDefault();
 		alert(this.state.email)
 	}
 	render(){

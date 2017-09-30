@@ -49,12 +49,11 @@ class Contact extends Component{
 			message: this.state.message
 		}
 		Axios.put(url,data).then((function(res){
-			this.setState({submitButtonText: 'Sent'});
-			this.setState({isSuccessfull:true});
+			this.setState({submitButtonText: 'Sent',isSuccessfull:true});			
+			setTimeout(() =>{this.setState({submitButtonText: 'Send',isSuccessful:false}), 5000})
 			alert(res.data);
 		}).bind(this)).catch((err)=>{
-			this.setState({submitButtonText: 'Send'});
-			this.setState({isSuccessfull:false})
+			this.setState({submitButtonText: 'Send',isSuccessfull:false});
 
 			alert(err);
 		})
