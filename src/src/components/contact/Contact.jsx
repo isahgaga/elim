@@ -38,12 +38,13 @@ class Contact extends Component{
 	}
 	handleSubmit(e){
 		//let that = this;
+		e.preventDefault();
 		this.setState({submitButtonText: '...Sending'});
-		if(this.state.email = ''){
+		if(this.state.email === ''){
 			this.setState({emailError:true})
 			return
 		}
-		e.preventDefault();
+		
 		//alert('nero')
 		const url = 'http://localhost:8000/api/contact';
 		const data = {
