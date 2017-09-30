@@ -54,7 +54,7 @@ class Contact extends Component{
 			alert(res.data);
 		}).bind(this)).catch((err)=>{
 			this.setState({submitButtonText: 'Send',isSuccessful:false});
-			
+			setTimeout(() =>{this.setState({submitButtonText: 'Srend',isSuccessful:true})},5000);
 			alert(err);
 		})
 		console.log('done my stuff');
@@ -67,7 +67,7 @@ class Contact extends Component{
 
 	render(){
   const styles={
-  			backgroundColor: (this.state.isSuccessful) ?'green':'fa6900'
+  			backgroundColor: (this.state.isSuccessful) ?'green':'#fa6900'
   };
 		return (
 				<div className="row about-row">
