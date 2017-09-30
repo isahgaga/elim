@@ -67,7 +67,7 @@ class Contact extends Component{
 
 	render(){
   const styles={
-  			backgroundColor: (this.state.isSuccessful) ?'green':'fa6900'
+  			backgroundColor: this.state.isSuccessful===true ?'green':'#fa6900'
   };
 		return (
 				<div className="row about-row">
@@ -100,7 +100,7 @@ class Contact extends Component{
 												</span>
 											</div>
 											<p>
-												<input type="submit" value={this.state.submitButtonText} onClick={this.handleSubmit} className="" style={styles}/>
+												<input type="submit" value={this.state.submitButtonText} onClick={this.handleSubmit} className="" style={styles} />
 												<span className="ajax-loader"></span>
 											</p>
 										</div>

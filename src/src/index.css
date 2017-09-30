@@ -195,6 +195,15 @@ p {
     font-size: 11px;
     color: #fff;
 }
+input[type="submit"]:hover {
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    color: #fa6900;
+    border: 1px solid #fa6900;
+    outline: 0;
+    background: transparent !important;
+}
 .outline-btn{
 	border-radius: 25px;
 	padding-top: 12px;
