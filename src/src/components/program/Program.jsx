@@ -10,6 +10,7 @@ class Program extends Component{
 		return (
 
 			<div className="program">
+				
 				<img src={this.props.program.img} className="mb-20" />
 				<div className="content">
 					<div className="heading-1 mb-10">
@@ -17,7 +18,7 @@ class Program extends Component{
 						{this.props.program.title}
 						</a>
 					</div>
-					<div className="excerpt mb-20">
+					<div className="excerpt color-def">
 						{this.props.program.description}
 					</div>
 					<div className="button">

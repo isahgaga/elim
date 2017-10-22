@@ -37,9 +37,9 @@ class Contact extends Component{
 		this.setState({message:e.target.value});
 	}
 	handleSubmit(e){
-		//let that = this;
+		
 		this.setState({submitButtonText: '...Sending'});
-		if(this.state.email = ''){
+		if(this.state.email === ''){
 			this.setState({emailError:true})
 			return
 		}

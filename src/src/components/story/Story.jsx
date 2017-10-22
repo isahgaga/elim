@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import OURSTORYIMG from '../../media/our-story.jpg'
+import {Link} from 'react-router-dom';
+
 class Story extends Component{
 	constructor(props){
 		super(props);
@@ -35,7 +37,7 @@ class Story extends Component{
 												 Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto dignissim qui blandit praesent luptatum.</p>
 											</div>
 											<p>
-												<a href="#" title="Read More"><span>Read More</span></a>
+												<Link to="/about" title="Read More"><span>Read More</span></Link>
 											</p>
 											
 										</div>

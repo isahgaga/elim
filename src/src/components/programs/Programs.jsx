@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Programs.css'
 import Program from '../program/Program.jsx'
 import GIRLS from '../../media/girls.jpg'
+import {Link} from 'react-router-dom';
 
 const fakeProgram ={
 	title:"Educate the girls",
@@ -44,7 +45,7 @@ class Programs extends Component{
 									</div>
 									<div className="col-md-12">
 										<p className="center mt-70 mb-75">
-											<a href="#" title="Read More" className="p-btn"><span>All Programs</span></a>
+											<Link to="/programs" title="Read More" className="p-btn"><span>All Programs</span></Link>
 										</p>
 									</div>
 								</div>	
