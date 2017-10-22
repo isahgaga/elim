@@ -28,7 +28,7 @@ class ProgramView extends Component{
 								Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
 							</p>
 							<div>
-								<Volunteer/>
+								<Volunteer {...this.props}/>
 							</div>
 				        </div>
 				        <div className="col-md-3">
