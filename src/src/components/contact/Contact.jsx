@@ -37,13 +37,14 @@ class Contact extends Component{
 		this.setState({message:e.target.value});
 	}
 	handleSubmit(e){
-		
+
+		e.preventDefault();
 		this.setState({submitButtonText: '...Sending'});
 		if(this.state.email === ''){
 			this.setState({emailError:true})
 			return
 		}
-		e.preventDefault();
+		
 		//alert('nero')
 		const url = 'http://localhost/elim/site/public/api/contact';
 		const data = {
