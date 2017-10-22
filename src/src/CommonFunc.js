@@ -227,6 +227,7 @@ export const validationRules={
 	guarantorName:['required','max:50','string'],
 	guarantorEmail:['required','email'],
 	guarantorPhone:['required','phoneNumber'],
+	message:['required','string']
 
 
 }
