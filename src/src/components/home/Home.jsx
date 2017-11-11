@@ -5,7 +5,7 @@ import HomeEvents from '../homeevents/HomeEvents.jsx';
 import Header from '../header/Header.jsx';
 import NewsLetter from '../newsletter/NewsLetter.jsx';
 import './Home.css'
-import BG from '../../media/edit3.jpg'
+import BG from '../../media/edit4.jpg'
 
 
 const Separator=(props)=>{
