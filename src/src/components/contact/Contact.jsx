@@ -14,31 +14,28 @@ const Separator=(props)=>{
 class Contact extends Component{
 	constructor(props){
 		super(props);
-		this.handleEmailChange=this.handleEmailChange.bind(this);
-		this.handleSubjectChange=this.handleSubjectChange.bind(this);
-		this.handleNameChange=this.handleNameChange.bind(this);
-		this.handleMessageChange=this.handleMessageChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.state={email:'',subject:'',name:'',message:'',submitButtonText:'Send',isSuccessful:false,failed:false,emailError:false};
+		this.handleInputChange=this.handleInputChange.bind(this);
+		this.submit=this.submit.bind(this);
+		this.state={email:'',subject:'',name:'',message:'',submitButtonText:'Send',isSuccessful:false,failed:false,emailError:false,submitBtn:this.props.submitBtn,
+		err:{email:'',subject:'',name:'',message:'',general:'',all:new Set()},disabled:false};
 
 
 	}
-	handleEmailChange(e){
-		this.setState({email:e.target.value});
-			
+	handleInputChange(e){
+		this.setState({[e.target.name]:e.target.value});
+		this.props.validator({name:e.target.id,value:e.target.value},'Contact',this);
+        return;
 	}
-	handleSubjectChange(e){
-		this.setState({subject:e.target.value});
-	}
-	handleNameChange(e){
-		this.setState({name:e.target.value});
-	}
-	handleMessageChange(e){
-		this.setState({message:e.target.value});
-	}
-	handleSubmit(e){
 
+	submit(e){
 		e.preventDefault();
+		this.props.validatorAll([{name:'name',value:this.state.name},{name:'email',value:this.state.email},
+							{name:'message',value:this.state.message},{name:'subject',value:this.state.subject}],'contact',this);
+		if (this.state.err.all.size > 0) {
+            // this.setState({sending:false,disabled:false})
+            return;
+        }
+		
 		this.setState({submitButtonText: '...Sending'});
 		if(this.state.email === ''){
 			this.setState({emailError:true})
@@ -47,11 +44,12 @@ class Contact extends Component{
 		
 		//alert('nero')
 		const url = 'http://localhost/elim/site/public/api/contact';
+		const {name,email,subject,message} = this.state
 		const data = {
-			name: this.state.name,
-			email: this.state.email,
-			subject: this.state.subject,
-			message: this.state.message
+			name,
+			email,
+			subject,
+			message
 		}
 		Axios.put(url,data).then((function(res){
 			this.setState({submitButtonText: 'Sent',isSuccessful:true});			
@@ -89,28 +87,35 @@ class Contact extends Component{
 
 										<div >
 											<div className="row">
-												<div className="col-xs-12 col-sm-6 form-group"><span className="your-name">
-													<input type="text" name="your-name" value={this.state.name} onChange={this.handleNameChange} size="40" className="" aria-required="true" aria-invalid="false" placeholder="Your Name"/></span>
-												</div>
-												<div className="col-xs-12 col-sm-6 form-group"><span className="your-email">
-													<input type="email" name="your-email" value={this.state.email} onChange={this.handleEmailChange} size="40" className="" aria-required="true" aria-invalid="false" placeholder="Your Email"/></span>
-													{this.state.emailError === true && <span>Please provide an email</span>}
-												</div>
-											</div>
-											<div className="form-group">
-												<span className="wpcf7-form-control-wrap your-subject">
-													<input type="text" name="your-subject" value={this.state.subject} onChange={this.handleSubjectChange} size="40" className="" aria-invalid="false" placeholder="Subject"/>
-													<span>Please enter a topic</span>
+												<div className={this.state.err.name.length > 0?"has-error col-xs-12 col-sm-6 form-group":"col-xs-12 col-sm-6 form-group "}>
+												<span className="your-name">
+													<input type="text" name="name" id="name" value={this.state.name} onChange={this.handleInputChange} size="40" className="" aria-required="true" aria-invalid="false" placeholder="Your Name"/>
 												</span>
+												<span className="text-danger">{this.state.err.name}</span>
+												</div>
+												<div className={this.state.err.email.length > 0?"has-error col-xs-12 col-sm-6 form-group":"col-xs-12 col-sm-6 form-group "}>
+												<span className="your-email">
+													<input type="email" name="email" id="email" value={this.state.email} onChange={this.handleInputChange} size="40" className="" aria-required="true" aria-invalid="false" placeholder="Your Email"/>
+												</span>
+												<span className="text-danger">{this.state.err.email}</span>	
+												</div>
 											</div>
-											<div className="form-group">
+											<div className={this.state.err.subject.length > 0?"has-error form-group":" form-group "}>
+												<span className="wpcf7-form-control-wrap your-subject">
+													<input type="text" name="subject" id="subject" value={this.state.subject} onChange={this.handleInputChange} size="40" className="" aria-invalid="false" placeholder="Subject"/>
+														
+												</span>
+												<span className="text-danger">{this.state.err.subject}</span>
+											</div>
+											<div className={this.state.err.message.length > 0?"has-error  form-group":" form-group "}>
 												<span className="">
-													<textarea name="your-message" value={this.state.message} onChange={this.handleMessageChange} cols="40" rows="8" className="" aria-invalid="false" placeholder="Your Message"></textarea>
+													<textarea name="message" id="message" value={this.state.message} onChange={this.handleInputChange} cols="40" rows="8" className="" aria-invalid="false" placeholder="Your Message"></textarea>
 
 												</span>
+												<span className="text-danger">{this.state.err.message}</span>	
 											</div>
 											<p>
-												<input type="submit" value={this.state.submitButtonText} onClick={this.handleSubmit} className="" style={styles} />
+												<input type="submit" value={this.state.submitButtonText} onClick={this.submit} disabled={this.state.disabled || this.state.err.all.size > 0} className="" style={styles} />
 												<span className="ajax-loader"></span>
 											</p>
 										</div>

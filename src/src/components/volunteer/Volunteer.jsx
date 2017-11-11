@@ -8,7 +8,7 @@ class Volunteer extends Component{
 		this.state={name:'',email:'',age:'',phone:'',gender:'',state:'',country:'',address:'',
 			qualification:'',guarantorName:'',guarantorEmail:'',guarantorPhone:'',profession:'',
 			err:{name:'',email:'',age:'',phone:'',gender:'',state:'',country:'',address:'',
-			profession:'',guarantorName:'',guarantorEmail:'',guarantorPhone:'',general:'',all:new Set(),disabled:false}};
+			profession:'',guarantorName:'',guarantorEmail:'',guarantorPhone:'',general:'',all:new Set()},disabled:false};
 	}
 
 	handleInputChange(e){
