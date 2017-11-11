@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 //import 'swiper/dist/css/swiper.css'
 import './Header.css'
+import SliderImage1 from '../../media/sliderImage1.jpg' 
+import SliderImage2 from '../../media/sliderImage2.jpg' 
 
 
 class Header extends Component{
@@ -27,7 +29,7 @@ class Header extends Component{
 			<div className="">
 				<ReactSlick {...settings}>
 					<div>
-						<div className="image image-large" style={{backgroundImage:`url(http://demo.gloriathemes.com/wp/charitywp/wp-content/uploads/2017/06/slider1-1920x740.jpg)`}}>
+						<div className="image image-large" style={{backgroundImage:'url(' + SliderImage1 + ')'}}>
 				<div className="content container">
 				<div className="content-wrapper">
 				<div className="header-title">Education for Africa</div>
@@ -40,7 +42,7 @@ class Header extends Component{
 				</div>
 					</div>
 			        <div>
-			       <div className="image image-large" style={{backgroundImage:`url(http://demo.gloriathemes.com/wp/charitywp/wp-content/uploads/2017/06/slider1-1920x740.jpg)`}}>
+			       <div className="image image-large" style={{backgroundImage:'url(' + SliderImage2 + ')'}}>
 				<div className="content container">
 				<div className="content-wrapper">
 				<div className="header-title">Education for Nigeria</div>

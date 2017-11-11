@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Banner from '../banner/Banner.jsx'
-import BG from '../../media/banner.jpg'
+import BG from '../../media/contactBanner.jpg'
 import './Contact.css'
 import Axios from 'axios';
 const Separator=(props)=>{

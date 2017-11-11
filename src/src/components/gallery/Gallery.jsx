@@ -5,7 +5,7 @@ import TB from '../../media/11.jpg'
 import lightbox from 'lightbox2'
 import 'lightbox2/dist/css/lightbox.min.css'
 import Banner from '../banner/Banner.jsx'
-import BG from '../../media/banner.jpg'
+import BG from '../../media/sliderImage1.jpg'
 
 class Gallery extends Component{
 
