@@ -39,7 +39,19 @@ class Header extends Component{
 				</div>
 				</div>
 					</div>
-			        <div><h3>2</h3></div>
+			        <div>
+			       <div className="image image-large" style={{backgroundImage:`url(http://demo.gloriathemes.com/wp/charitywp/wp-content/uploads/2017/06/slider1-1920x740.jpg)`}}>
+				<div className="content container">
+				<div className="content-wrapper">
+				<div className="header-title">Education for Nigeria</div>
+				<p className="header-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
+				<div className="buttons">
+				<a href="" target="_parent" title="Donate Now"><span>Donate Now</span></a>
+				</div>
+				</div>
+				</div>
+				</div>
+			        </div>
 			        
 				</ReactSlick>
 			</div>

@@ -6,7 +6,7 @@ class Volunteer extends Component{
 		this.handleInputChange=this.handleInputChange.bind(this);
 		this.submit=this.submit.bind(this);
 		this.state={name:'',email:'',age:'',phone:'',gender:'',state:'',country:'',address:'',
-			qualification:'',guarantorName:'',guarantorEmail:'',guarantorPhone:'',
+			qualification:'',guarantorName:'',guarantorEmail:'',guarantorPhone:'',profession:'',
 			err:{name:'',email:'',age:'',phone:'',gender:'',state:'',country:'',address:'',
 			profession:'',guarantorName:'',guarantorEmail:'',guarantorPhone:'',general:'',all:new Set(),disabled:false}};
 	}
@@ -17,12 +17,13 @@ class Volunteer extends Component{
         return;
 	}
 
-	submit(){
+	submit(e){
+		e.preventDefault();
 		this.props.validatorAll([{name:'name',value:this.state.name},{name:'email',value:this.state.email},{name:'state',value:this.state.state},
 			{name:"age",value:this.state.age},{name:"phone",value:this.state.phone},{name:"gender",value:this.state.gender},
 			{name:"country",value:this.state.country},{name:"address",value:this.state.address},{name:"qualification",value:this.state.qualification},
-			{name:"guarantorName",value:this.state.guarantorName},{name:"guarantorEmail",value:this.state.guarantorEmail},{name:"guarantorPhone",value:this.state.guarantorPhone}],
-			'volunteer',this);
+			{name:"guarantorName",value:this.state.guarantorName},{name:"profession",value:this.state.profession},{name:"guarantorEmail",value:this.state.guarantorEmail},{name:"guarantorPhone",value:this.state.guarantorPhone}],
+			'Volunteer',this);
         if (this.state.err.all.size > 0) {
             // this.setState({sending:false,disabled:false})
             return;
@@ -147,7 +148,7 @@ class Volunteer extends Component{
 </fieldset>
 
 <div>
-<input type="submit" value="Send Form" className="wpcf7-form-control wpcf7-submit" disabled={this.state.disabled || this.state.err.all.size > 0} onClick={this.submit} />
+<input type="submit" value="Sign up" className="wpcf7-form-control wpcf7-submit" disabled={this.state.disabled || this.state.err.all.size > 0} onClick={this.submit} />
 
 </div>
 </div>

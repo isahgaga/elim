@@ -3,7 +3,9 @@
 
 
 
-//
+input[disabled]{
+    cursor: not-allowed !important;
+}
 body {
   margin: 0;
   padding: 0;

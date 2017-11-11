@@ -223,7 +223,7 @@ export const validationRules={
 	gender:['required'],
 	age:['required','number','max:2'],
 	country:['required','string'],
-	profession:['string'],
+	profession:['required','string'],
 	guarantorName:['required','max:50','string'],
 	guarantorEmail:['required','email'],
 	guarantorPhone:['required','phoneNumber'],
@@ -236,9 +236,30 @@ export const getErrorMsg=(error,name,controller=null)=>{
 	if (typeof controller === 'string' && ['a','e','i','o','u'].indexOf(controller[0].toLowerCase()) !== -1) {
 		 a='an'; 
 	}
-	
+	controller='';
 	if (name ==='contactName') {
 		name='contact name'
+	}
+	if (name ==='guarantorName') {
+		name='guarantor name'
+	}
+	if (name ==='guarantorEmail') {
+		name='guarantor email'
+	}
+	if (name ==='guarantorPhone') {
+		name='guarantor phone number'
+	}
+	if (name ==='phone') {
+		name='phone number'
+	}
+	if (name ==='email') {
+		a='an'
+	}
+	if (name ==='age') {
+		a='an'
+	}
+	if (name ==='address') {
+		a='an'
 	}
 
 	if (error === 'required') {
