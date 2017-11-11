@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PGBIG from '../../media/pgbig.jpg'
 import Banner from '../banner/Banner.jsx';
-import BG from '../../media/banner.jpg';
+import BG from '../../media/sliderImage1.jpg';
 import {Eventy} from '../homeevents/HomeEvents.jsx';
 import Volunteer from '../volunteer/Volunteer.jsx'
 import Donate from '../donate/Donate.jsx'

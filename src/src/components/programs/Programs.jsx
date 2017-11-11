@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Programs.css'
 import Program from '../program/Program.jsx'
-import GIRLS from '../../media/girls.jpg'
+import GIRLS from '../../media/girls1.jpg'
 import {Link} from 'react-router-dom';
 
 const fakeProgram ={

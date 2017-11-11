@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import OURSTORYIMG from '../../media/our-story.jpg'
+import OURSTORYIMG from '../../media/our-story1.jpg'
 import {Link} from 'react-router-dom';
 
 class Story extends Component{

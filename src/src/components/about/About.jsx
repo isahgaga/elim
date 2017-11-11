@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Banner from '../banner/Banner.jsx'
-import BG from '../../media/banner.jpg'
-import OURSTORYIMG from '../../media/our-story.jpg'
+import BG from '../../media/sliderImage1.jpg'
+import OURSTORYIMG from '../../media/homeBG.jpg'
 
 const Separator=(props)=>{
 	return(

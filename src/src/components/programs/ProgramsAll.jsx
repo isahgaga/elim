@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Banner from '../banner/Banner.jsx';
-import BG from '../../media/banner.jpg';
+import BG from '../../media/sliderImage1.jpg';
 import Program from '../program/Program.jsx';
-import GIRLS from '../../media/girls.jpg'
+import GIRLS from '../../media/girls1.jpg'
 
 const fakeProgram ={
 	title:"Educate the girls",
