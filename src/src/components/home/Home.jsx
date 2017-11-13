@@ -28,7 +28,7 @@ class Home extends Component{
 					<Header/>
 					<Story/>
 					<Separator/>
-					<Programs/>
+					<Programs {...this.props}/>
 					<HomeEvents/>
 					<NewsLetter/>
 				</div>

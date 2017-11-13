@@ -14,10 +14,31 @@ class ProgramsAll extends Component{
 
 	constructor(props){
 			super(props);
-			this.state={};
+			this.state={Programs:[]};
+	}
+	componentWillMount(){
+		this.props.contentfulClient.getEntries({
+		  'content_type': 'program'
+		})
+		.then(({items})=>{
+		    //console.log(entries.includes.Entry)
+		    this.setState({Programs:this.format.call(this,items)})
+		    
+		})
 	}
 	componentDidMount(){
 		
+	}
+	format(data){
+		return data.map((item,index)=>{
+			return {
+				id:item.sys.id,
+				title:item.fields.name,
+				description:item.fields.description,
+				img:item.fields.pic.fields,
+				isDonate:item.fields.isDonate
+			}
+		})
 	}
 
 	render(){
@@ -27,16 +48,11 @@ class ProgramsAll extends Component{
 			<div className="container">
 				<div className="row">
 					<div className="col-md-12">
-						<div className="col-md-4">
-							<Program program={fakeProgram} />
-						</div>
-						<div className="col-md-4">
-							<Program program={fakeProgram} />
-						</div>
-						<div className="col-md-4">
-							<Program program={fakeProgram} />
-						</div>
-										
+						{
+							this.state.Programs.map((item,index)=><div className="col-md-4" key={++index}>
+							<Program program={item} />
+						</div> )
+						}
 										
 					</div>
 

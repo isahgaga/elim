@@ -13,6 +13,28 @@ const fakeProgram ={
 class Programs extends Component{
 	constructor(props){
 		super(props);
+		this.state={Programs:[]};
+	}
+	componentWillMount(){
+		this.props.contentfulClient.getEntries({
+		  'content_type': 'program',
+		  limit:3
+		})
+		.then(({items})=>{
+		    this.setState({Programs:this.format.call(this,items)})
+		    
+		})
+	}
+	format(data){
+		return data.map((item,index)=>{
+			return {
+				id:item.sys.id,
+				title:item.fields.name,
+				description:item.fields.description,
+				img:item.fields.pic.fields,
+				isDonate:item.fields.isDonate
+			}
+		})
 	}
 
 	render(){
@@ -31,17 +53,11 @@ class Programs extends Component{
 							<div className="col-md-12">
 								<div className="row">
 									<div className="col-md-12">
-										<div className="col-md-4">
-											<Program program={fakeProgram} />
-										</div>
-										<div className="col-md-4">
-											<Program program={fakeProgram} />
-										</div>
-										<div className="col-md-4">
-											<Program program={fakeProgram} />
-										</div>
-										
-										
+										{
+											this.state.Programs.map((item,index)=><div className="col-md-4" key={++index}>
+											<Program program={item} />
+											</div> )
+										}
 									</div>
 									<div className="col-md-12">
 										<p className="center mt-70 mb-75">
