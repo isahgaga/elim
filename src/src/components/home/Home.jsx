@@ -29,7 +29,7 @@ class Home extends Component{
 					<Story/>
 					<Separator/>
 					<Programs {...this.props}/>
-					<HomeEvents/>
+					<HomeEvents {...this.props}/>
 					<NewsLetter/>
 				</div>
 				

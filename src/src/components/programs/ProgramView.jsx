@@ -8,7 +8,7 @@ import Donate from '../donate/Donate.jsx'
 class ProgramView extends Component{
 	constructor(props){
 		super(props);
-		this.state={Program:'',rprogram:{}};
+		this.state={Program:'',rprogram:{},events:[]};
 	}
 	componentWillMount(){
 		this.props.contentfulClient
@@ -16,6 +16,25 @@ class ProgramView extends Component{
 		.then(({items})=>{
 		    this.setState({Program:items[0].fields,rprogram:items[0].fields})
 		    
+		})
+	}
+	componentDidMount(){
+		this.props.contentfulClient.getEntries({
+			'content_type': 'latestEvents',
+			limit:3
+		  })
+		  .then(({items})=>{
+			  this.setState({events:this.format.call(this,items)})
+		  })
+	}
+	format(data){
+		return data.map((item,index)=>{
+			console.log(item)
+			return {
+				id:item.sys.id,
+				title:item.fields.title,
+				date:item.fields.eventDate
+			}
 		})
 	}
 	render(){
@@ -47,7 +66,7 @@ class ProgramView extends Component{
 				        </div>
 				        <div className="col-md-3">
 				        <div className="widget-title">Latest Events</div>
-				        	<Eventy/>
+				        	<Eventy events={this.state.events}/>
 				        </div>
 				    </div>
 					}

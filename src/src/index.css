@@ -20,7 +20,7 @@ body {
 	font-size: 35px;
 	text-transform: uppercase;
     font-weight: 700;
-    color: #973793;
+    color: #fa6900;
     line-height: 1.7;
 }
 
@@ -35,7 +35,7 @@ body {
     content: '';
     height: 2px;
     width: 50px;
-    background: #973793;
+    background: #fa6900;
     display: block;
     margin-top: 3px;
     margin-bottom: 16px;

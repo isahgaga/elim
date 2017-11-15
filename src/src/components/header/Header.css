@@ -43,7 +43,7 @@
 }
 .image-large:before{
 	background: #000000;
-    opacity: 0.3;
+    opacity: 0.2;
     display: block;
     content: '';
     position: absolute;

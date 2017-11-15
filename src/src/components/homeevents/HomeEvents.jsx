@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import HAND from '../../media/hand.jpg'
 import Blog from '../homeblog/HomeBlog.jsx'
+import moment from 'moment'
 
-
-export const Event=(props)=>{
+export const Event=({event})=>{
 	return (
 		<div className="event-wrapper">
 		<div>
@@ -11,29 +11,37 @@ export const Event=(props)=>{
 			<img src={HAND} />
 			</div>
 			<div className="content">
-			<div className="title2">Friendship and Peace</div>
-			<div className="excerpt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy euismod tincidunt ut laoreet dolore magna.</div>
-			<div className="eventdate"><i className="fa fa-calendar" aria-hidden="true"></i><span>May 2, 2018</span></div></div>
+			<div className="title2">{event.title}</div>
+			<div className="excerpt">{event.description}</div>
+			<div className="eventdate"><i className="fa fa-calendar" aria-hidden="true"></i><span>{moment(event.date).format("MMM, D YYYY")}</span></div></div>
 		</div>
 
 			
 		</div>
 		)
 }
-export const Eventy=(props)=>{
+export const Eventy=({events})=>{
 	return (
-		<div className="event-wrapper">
-		<div>
-			<div className="image-article">
-			<img src={HAND} />
+		<div className="event-wrapper row">
+		{
+			events.map((event,index)=><div key={++index} className="col-md-12 mb-15">
+			<div className="row">
+				<div className="col-md-6">
+					<div className="image-article">
+						<img src={HAND} />
+					</div>
+				</div>
+				<div className="col-md-6">
+				<div className="content">
+			<div className="title2 color-def" style={{fontSize:'11px'}}>{event.title}</div>
+			
+			<div className="eventdate color-def"><i className="fa fa-calendar" aria-hidden="true" style={{fontSize:'10px'}}></i><span style={{fontSize:'9px'}}>{moment(event.date).format("MMM, D YYYY")}</span></div></div>
+				</div>
 			</div>
-			<div className="content">
-			<div className="title2 color-def">Friendship and Peace</div>
 			
-			<div className="eventdate color-def"><i className="fa fa-calendar" aria-hidden="true"></i><span>May 2, 2018</span></div></div>
-		</div>
-
 			
+		</div>)
+		}	
 		</div>
 		)
 }
@@ -41,6 +49,25 @@ export const Eventy=(props)=>{
 class HomeEvents extends Component{
 	constructor(props){
 		super(props);
+		this.state={events:[]}
+	}
+	componentWillMount(){
+		this.props.contentfulClient.getEntries({
+			'content_type': 'latestEvents'
+		  })
+		  .then(({items})=>{
+			  this.setState({events:this.format.call(this,items)})
+		  })
+	}
+	format(data){
+		return data.map((item,index)=>{
+			console.log(item)
+			return {
+				id:item.sys.id,
+				title:item.fields.title,
+				date:item.fields.eventDate
+			}
+		})
 	}
 
 	render(){
@@ -59,21 +86,13 @@ class HomeEvents extends Component{
 									</div>
 									
 									</div>
-									<div className="col-md-6">
-										<Event/>
-									</div>
-									<div className="col-md-6">
-									<Event/>
-									</div>
-									<div className="col-md-6">
-									<Event/>
-									</div>
-									<div className="col-md-6">
-									<Event/>
-									</div>
-									<div className="col-md-6">
-										<Event/>
-									</div>
+									{
+										this.state.events.map((item,index)=><div className="col-md-6" key={++index}>
+										<Event event={item}/>
+									</div>)
+									}
+									
+									
 								</div>
 							</div>
 							

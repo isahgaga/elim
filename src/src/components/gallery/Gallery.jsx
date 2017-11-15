@@ -23,7 +23,7 @@ class Gallery extends Component{
 
 	render(){
 		return (
-			<div className="row">
+			<div className="row mb-75">
 			<Banner bImage={BG} title="Gallery"/>
 			<div className="container">
 				<div className="row">
@@ -43,11 +43,7 @@ class Gallery extends Component{
 				</div>
 
 			</div>
-			<div id="selector1">
- 
-  
-  
-</div>
+			<div id="selector1"></div>
 
 			</div>
 			)
