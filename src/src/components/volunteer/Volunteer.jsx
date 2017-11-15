@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 
 class Volunteer extends Component{
 	constructor(props){
 		super(props);
 		this.handleInputChange=this.handleInputChange.bind(this);
 		this.submit=this.submit.bind(this);
-		this.state={name:'',email:'',age:'',phone:'',gender:'',state:'',country:'',address:'',
-			qualification:'',guarantorName:'',guarantorEmail:'',guarantorPhone:'',profession:'',
+		this.state={name:'',email:'',age:'',phone:'',isSuccessful:false,gender:'',state:'',country:'',address:'',
+			qualification:'',guarantorName:'',submitButtonText:'Sign Up',guarantorEmail:'',guarantorPhone:'',profession:'',
 			err:{name:'',email:'',age:'',phone:'',gender:'',state:'',country:'',address:'',
 			profession:'',guarantorName:'',guarantorEmail:'',guarantorPhone:'',general:'',all:new Set()},disabled:false};
 	}
@@ -33,13 +34,31 @@ class Volunteer extends Component{
 		const data={
 				name,email,age,phone,gender,state,country,address,qualification,guarantorName,guarantorEmail,guarantorPhone
 		}
+		const url = ''
+		Axios.put(url,data).then(res =>{
+			this.setState({submitButtonText: 'Successful',isSuccessful:true});			
+			setTimeout(() =>{this.setState({submitButtonText: 'Sign Up',isSuccessful:false})},5000);
+
+		}).catch(err =>{
+
+			
+			this.props.failedRequest.call(this,"Volunteer not created.");
+			alert(err)
+
+		})
         
-		this.props.failedRequest.call(this,"Volunteer not created.");
+		//this.props.failedRequest.call(this,"Volunteer not created.");
 
 
 	}
 
 	render(){
+		const styles={
+
+  			backgroundColor: (this.state.isSuccessful) ?'green':'#fa6900'
+  		}
+
+  
 		return (
 
 			<div className="">
@@ -148,7 +167,7 @@ class Volunteer extends Component{
 </fieldset>
 
 <div>
-<input type="submit" value="Sign up" className="wpcf7-form-control wpcf7-submit" disabled={this.state.disabled || this.state.err.all.size > 0} onClick={this.submit} />
+<input type="submit" value={this.state.submitButtonText} className="wpcf7-form-control wpcf7-submit" disabled={this.state.disabled || this.state.err.all.size > 0} onClick={this.submit} style={styles} />
 
 </div>
 </div>
