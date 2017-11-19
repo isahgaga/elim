@@ -9,6 +9,14 @@ class Nav extends Component{
 
 	constructor(props){
 			super(props);
+			this.state={catalogUrl:''}
+	}
+	componentWillMount(){
+		this.props.contentfulClient.getAsset('3MQTSgx3jqGy264CysI8Cw')
+		  .then(({fields:{file}})=>{
+			 this.setState({catalogUrl:'https:'+file.url})
+		  })
+		
 	}
 	componentDidMount(){
 		window.$('.hamburger').on('click', function(e){
@@ -36,7 +44,7 @@ class Nav extends Component{
 						<li><Link to="/gallery">Gallery</Link></li>
 						<li><Link to="/contact">Contact</Link></li>
 					</ul>
-					<a href="#" className="login_btn">Download catalog</a>
+					<a href={this.state.catalogUrl} className="login_btn" target="_blank">Download catalog</a>
 				</nav>
 			</div>
 		</header>

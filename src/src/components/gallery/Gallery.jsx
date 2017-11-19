@@ -13,12 +13,26 @@ class Gallery extends Component{
 			super(props);
 			this.state={images:[]}
 	}
+	componentWillMount(){
+		this.props.contentfulClient.getEntries({
+			'content_type': 'gallery'
+		})
+		.then(({items})=>{
+		    this.setState({images:this.format.call(this,items)})
+		    
+		})
+	}
+	format(data){
+		return data.map((item,index)=>{
+			return {
+				id:item.sys.id,
+				title:item.fields.title,
+				img:item.fields.pic.fields
+			}
+		})
+	}
 	componentDidMount(){
-		this.setState({images:[PIC1,PIC2]});
-		lightbox.option({
-      'wrapAround': true,
-      fitImagesInViewport:true
-    })
+		
 	}
 
 	render(){
@@ -31,8 +45,8 @@ class Gallery extends Component{
 				  	this.state.images.map((img,index)=>{
 				  		return (
 				  			<div className="col-md-3">
-				  					<a href={img} key={++index} data-lightbox="roadtrip">
-				  			<img src={TB}/>
+				  					<a href={typeof img.img ==='object'?'https:'+img.img.file.url+ '?fit=fill&w=960&h=440':''} key={++index} data-lightbox="roadtrip">
+				  			<img src={typeof img.img ==='object'?'https:'+img.img.file.url+ '?fit=thumb&w=262&h=148':''}/>
 				  			</a>
 				  			</div>
 				  			

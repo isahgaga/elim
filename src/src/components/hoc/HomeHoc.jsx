@@ -23,7 +23,7 @@ const HOME = (Comp)=>{
 			const LoaderButton=<span><i className="fa fa-circle-o-notch fa-spin"></i> Loading</span>;
 			return (
 				<div >
-				<Nav/>
+				<Nav {...this.props} contentfulClient={client}/>
 				<div className="container-fluid">
 					<Comp {...this.props} swal={swal} contentfulClient={client}  LoaderButton={LoaderButton} submitBtn={`Submit`} validator={validator} validatorAll={validatorAll} failedRequest={failedRequest} startRequest={startRequest} successRequest={successRequest}/>
 				</div>
